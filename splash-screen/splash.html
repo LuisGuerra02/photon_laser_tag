@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="splash.css">
+    </head>
+    <body style="background-color:#0a060a;">
+        <div class="splash">
+            <h1 class = "fade-in"> <img src="logo.jpeg" cellpadding = "50" style="border: 8px double" alt="splash screen" width="1400" height="725" style="vertical-align:middle"/></h1>
+        </div>   
+    </body>
+</html>
+<script>
+    const fadeOut = 
+    document.querySelector('.splash');
+    document.addEventListener('DOMContentLoaded', (timeout)=>
+        {setTimeout(()=>
+            {fadeOut.classList.add('fade-out');}, 4000)})
+</script>
