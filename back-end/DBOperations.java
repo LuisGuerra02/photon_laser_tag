@@ -15,17 +15,15 @@ public class DBOperations
          while (rs.next()) 
          {
             int id = rs.getInt("id");
-            String  first_name = rs.getString("first_name");
+            String first_name = rs.getString("first_name");
             String last_name  = rs.getString("last_name");
-            String  codename = rs.getString("codename");
+            String codename = rs.getString("codename");
 
-            System.out.println( "Player ID: " + id );
-            System.out.println( "First Name: " + first_name );
-            System.out.println( "Last Name: " + last_name );
-            System.out.println( "Codename: " + codename );
-            System.out.println();
+            System.out.format("%s, %s, %s, %s\n", id, first_name, last_name, codename);
          }
          
+         System.out.println();
+
          // Close connection after using
          rs.close();
          statement.close();
@@ -35,5 +33,31 @@ public class DBOperations
       {
          e.printStackTrace();
       }
+   }
+
+   public void POST(Connection c, int id, String firstname, String lastname, String codename)
+   {
+      try 
+      {
+         Statement statement = c.createStatement(); 
+
+         ResultSet rs = statement.executeQuery("SELECT COUNT(id) FROM player WHERE id = " + id + ";");
+         rs.next();
+
+         if (rs.getInt(1) == 0)
+         {
+            statement.executeUpdate("INSERT INTO player (id, first_name, last_name, codename) VALUES (" + id + ", '" + firstname + "', '" + lastname + "', '" + codename + "');");
+            statement.close();
+         }
+         else
+         {
+            System.out.println("Player ID already exists!");
+         }         
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+      
    }
 }

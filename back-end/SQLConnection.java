@@ -16,7 +16,8 @@ public class SQLConnection {
          );
 
          DBOperations operation = new DBOperations();
-         
+
+         operation.POST(c, 2, "testName", "testLastName", "testCode");
          operation.GET(c);
       } 
       catch (Exception e) 
