@@ -12,10 +12,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Directing Resource Requests
 app.use(express.static(path.join(__dirname, "front-end")));
 app.set("views", path.join(__dirname, "front-end"));
+app.use(express.json());
 
 app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
 });
+
+app.post('/', (req, res) => {
+	const { parcel } = req.body;
+	console.log(parcel); // For testing
+
+})
 
 app.get("/players", db.getPlayers);
 
