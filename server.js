@@ -17,11 +17,10 @@ app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
 });
 
+
 app.get("/players", db.getPlayers);
 
-app.get("/entry", (req, res) => {
-	res.render("player-screen/player-form");
-});
+app.get("/entry", db.getPlayers);
 
 app.post("/entry", (req, res) => {
 

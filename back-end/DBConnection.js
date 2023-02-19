@@ -16,8 +16,9 @@ const getPlayers = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
-  })
+    
+    response.render('player-screen/player-form', {players: results.rows});
+  });
 }
 
 const setPlayers = (request, response) => {
@@ -29,7 +30,7 @@ const setPlayers = (request, response) => {
     return;
   }
 
-  const queryString = "INSERT INTO player (id, first_name, last_name, codename) VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', '" + "placeholder" + "');"
+  let queryString = "INSERT INTO player (id, first_name, last_name, codename) VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', '" + "placeholder" + "');"
   pool.query(queryString, (error, results) => {
     if (error) {
       throw error;

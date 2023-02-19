@@ -1,7 +1,12 @@
 <% for (let i = 0; i < 15; i++) { %>
 <tr>
-    <td><input type="text" name="<%= i %>[playerID]"/></td>
-    <td><input type="text" name="<%= i %>[playerName]"/></td>
+    <% if (typeof players[i] === 'undefined') { %>
+        <td><input type="text" name="<%= i %>[playerID]"/></td>
+        <td><input type="text" name="<%= i %>[playerName]"/></td>
+    <% }  else { %>
+    <td><input type="text" name="<%= i %>[playerID]" value="<%= players[i].id %>"/></td>
+    <td><input type="text" name="<%= i %>[playerName]" value="<%= players[i].first_name + ' ' + players[i].last_name %>"/></td>
+    <% } %>
 </tr>
 <% } %>
 
@@ -15,8 +20,13 @@
       </tr>
 <% for (let i = 15; i < 30; i++) { %>
 <tr>
-    <td><input type="text" name="<%= i %>[playerID]"/></td>
-    <td><input type="text" name="<%= i %>[playerName]"/></td>
+    <% if (typeof players[i] === 'undefined') { %>
+        <td><input type="text" name="<%= i %>[playerID]"/></td>
+        <td><input type="text" name="<%= i %>[playerName]"/></td>
+    <% }  else { %>
+    <td><input type="text" name="<%= i %>[playerID]" value="<%= players[i].id %>"/></td>
+    <td><input type="text" name="<%= i %>[playerName]" value="<%= players[i].first_name + ' ' + players[i].last_name %>"/></td>
+    <% } %>
 </tr>
 <% } %>
 </table>
