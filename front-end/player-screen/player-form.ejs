@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Photon Laser Tag</title>
+        <link rel="stylesheet" href="player-screen/form.css">
+	</head>
+
+	<body style = "background-color: white;">
+		<div class="row">
+            <div class = "column">
+                <table>
+                    <tr>
+                        <th style="background-color: #fa7055;">Player ID</th>
+                        <th style="background-color: #fa7055;">Player Codename</th>
+                    </tr>
+                    <form action="/test" method="POST">
+                        <%- include('players.ejs') %>
+                        <div style="text-align: center;"><button type="submit" class="btn">Submit</button></div>
+                    </form>
+            </div>
+		</div>
+	</body>
+</html>

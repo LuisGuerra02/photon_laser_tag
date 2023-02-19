@@ -12,7 +12,7 @@ const pool = new Pool({
 })
 
 const getPlayers = (request, response) => {
-  pool.query('SELECT * FROM player ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT * FROM player ORDER BY id ASC;', (error, results) => {
     if (error) {
       throw error
     }
@@ -20,6 +20,23 @@ const getPlayers = (request, response) => {
   })
 }
 
+const setPlayers = (request, response) => {
+  
+  const playerID = request.playerID
+  const playerName = request.playerName.split(" ", 2);
+
+  console.log(`${playerID}, ${playerName[0]}, ${playerName[1]}`);
+
+  const queryString = "INSERT INTO player (id, first_name, last_name, codename) VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', '" + "placeholder" + "');"
+
+  pool.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+  })
+}
+
 module.exports = {
   getPlayers,
+  setPlayers,
 }

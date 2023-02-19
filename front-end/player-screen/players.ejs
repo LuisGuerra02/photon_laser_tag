@@ -1,0 +1,23 @@
+<% for (let i = 0; i < 15; i++) { %>
+<tr>
+    <td><input type="text" name="<%= i %>[playerID]"/></td>
+    <td><input type="text" name="<%= i %>[playerName]"/></td>
+</tr>
+<% } %>
+
+</table>
+</div>
+<div class = "column">
+<table>
+    <tr>
+        <th style="background-color: #757fe4;">Player ID</th>
+        <th style="background-color: #757fe4;">Player Codename</th>
+      </tr>
+<% for (let i = 15; i < 30; i++) { %>
+<tr>
+    <td><input type="text" name="<%= i %>[playerID]"/></td>
+    <td><input type="text" name="<%= i %>[playerName]"/></td>
+</tr>
+<% } %>
+</table>
+</div>
