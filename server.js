@@ -19,11 +19,11 @@ app.get("/", (req, res) => {
 
 app.get("/players", db.getPlayers);
 
-app.get("/test", (req, res) => {
+app.get("/entry", (req, res) => {
 	res.render("player-screen/player-form");
 });
 
-app.post("/test", (req, res) => {
+app.post("/entry", (req, res) => {
 
 	for (let i = 0; i < 29; i++) {
 		db.setPlayers(req.body[i]);

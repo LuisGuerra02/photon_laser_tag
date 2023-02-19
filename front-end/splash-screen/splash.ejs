@@ -13,6 +13,12 @@
     const fadeOut = 
     document.querySelector('.splash');
     document.addEventListener('DOMContentLoaded', (timeout)=>
-        {setTimeout(()=>
-            {fadeOut.classList.add('fade-out');}, 4000)})
+        {setTimeout(()=> {
+            fadeOut.classList.add('fade-out');
+            setTimeout(loadForm, 2500);
+        }, 4000)})
+
+    function loadForm() {
+        window.location = "entry";
+    }
 </script>

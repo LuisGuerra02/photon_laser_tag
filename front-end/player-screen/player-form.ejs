@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Photon Laser Tag</title>
-        <link rel="stylesheet" href="player-screen/form.css">
-	</head>
 
-	<body style = "background-color: white;">
-		<div class="row">
-            <div class = "column">
+<head>
+    <title>Photon Laser Tag</title>
+    <link rel="stylesheet" href="player-screen/form.css">
+</head>
+
+<div class="fade-in">
+
+    <body style="background-color: #0a060a;" onload="clearForm()">
+        <div class="row">
+            <div class="column">
                 <table>
                     <tr>
                         <th style="background-color: #fa7055;">Player ID</th>
-                        <th style="background-color: #fa7055;">Player Codename</th>
+                        <th style="background-color: #fa7055;">Player Name</th>
                     </tr>
-                    <form action="/test" method="POST">
+                    <form class="player-form" action="/entry" method="POST">
                         <%- include('players.ejs') %>
-                        <div style="text-align: center;"><button type="submit" class="btn">Submit</button></div>
+                            <div style="text-align: center;"><button type="submit" class="btn">Submit</button></div>
                     </form>
             </div>
-		</div>
-	</body>
+        </div>
+</div>
+</body>
+
+<script>
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        window.location = "/";
+    }
+
+    function clearForm() {
+        document.getElementsByTagName("input").value = "";
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    }
+</script>
+
 </html>
