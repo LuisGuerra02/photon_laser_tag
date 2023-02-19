@@ -21,7 +21,7 @@ const getPlayers = (request, response) => {
   });
 }
 
-const setPlayers = (request, response) => {
+const setPlayers = async (request, response) => {
   
   const playerID = parseInt(request.playerID);
   const playerName = request.playerName.split(" ", 2);
@@ -30,9 +30,17 @@ const setPlayers = (request, response) => {
     return;
   }
 
-  let queryString = "INSERT INTO player (id, first_name, last_name, codename) VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', '" + "placeholder" + "');"
+  let queryString = 
+  "INSERT INTO player (id, first_name, last_name, codename)" +
+  "VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', 'placeholder') " +
+  "ON CONFLICT (id) DO UPDATE " +
+    "SET first_name = EXCLUDED.first_name, " +
+        "last_name = EXCLUDED.last_name, " +
+        "codename = EXCLUDED.codename;";
+
   pool.query(queryString, (error, results) => {
     if (error) {
+      console.log("queryString = \n" + queryString);
       throw error;
     }
   })

@@ -19,7 +19,7 @@
         <th style="background-color: #757fe4;">Player Name</th>
       </tr>
 <% for (let i = 15; i < 30; i++) { %>
-<tr>
+    <tr>
     <% if (typeof players[i] === 'undefined') { %>
         <td><input type="text" name="<%= i %>[playerID]"/></td>
         <td><input type="text" name="<%= i %>[playerName]"/></td>
@@ -27,7 +27,7 @@
     <td><input type="text" name="<%= i %>[playerID]" value="<%= players[i].id %>"/></td>
     <td><input type="text" name="<%= i %>[playerName]" value="<%= players[i].first_name + ' ' + players[i].last_name %>"/></td>
     <% } %>
-</tr>
+    </tr>
 <% } %>
 </table>
 </div>

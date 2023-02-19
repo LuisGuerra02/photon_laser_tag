@@ -28,8 +28,10 @@ app.post("/entry", (req, res) => {
 		db.setPlayers(req.body[i]);
 	}
 
+	res.render("splash-screen/splash");
+
 	// TODO: Render Player Game (For now just delivering existing form)
-	res.render("player-screen/player-form");
+	//res.render("player-screen/player-form");
 })
 
 app.listen(3000, () => {
