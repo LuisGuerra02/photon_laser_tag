@@ -13,8 +13,8 @@
             <div class="column">
                 <table>
                     <tr>
-                        <th style="background-color: #fa7055;">Player ID</th>
                         <th style="background-color: #fa7055;">Player Name</th>
+                        <th style="background-color: #fa7055;">Player Codename</th>
                     </tr>
                     <form class="player-form" action="/entry" method="POST">
                         <%- include('players.ejs') %>
@@ -30,6 +30,10 @@
         window.location = "/";
     }
 
+    window.onload = function() {
+        getPlayersFromDB();
+    }
+
     function clearForm() {
 
         for (let i = 0; i < 30; i++) {
@@ -42,6 +46,7 @@
             window.history.replaceState(null, null, window.location.href);
         }
     }
+    
 </script>
 
 </html>

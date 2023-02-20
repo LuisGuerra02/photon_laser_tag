@@ -1,33 +1,48 @@
-<% for (let i = 0; i < 15; i++) { %>
+<% for (let i = 1; i < 16; i++) { -%>
 <tr>
-    <% if (typeof players[i] === 'undefined') { %>
-        <td><input type="text" name="<%= i %>[playerID]"/></td>
+    <% let found = false; -%>
+    <% for (var l = players.length, k = 0; k < l; k++) { -%>
+            <% if (players[k].id == i) { -%>
+                <td><input type="text" name="<%= i -%>[playerName]" value="<%= players[k].first_name + ' ' + players[k].last_name -%>"/></td>
+                <td><input type="text" name="<%= i -%>[playerCodename]" value="<%= players[k].codename -%>"/></td>
+                <% found = true; -%>
+                <% break; -%>
+            <% } -%>
+    <% } -%>
+    <% if (!found) { -%>
         <td><input type="text" name="<%= i %>[playerName]"/></td>
-    <% }  else { %>
-    <td><input type="text" name="<%= i %>[playerID]" value="<%= players[i].id %>"/></td>
-    <td><input type="text" name="<%= i %>[playerName]" value="<%= players[i].first_name + ' ' + players[i].last_name %>"/></td>
-    <% } %>
+        <td><input type="text" name="<%= i %>[playerCodename]"/></td>
+    <% } -%>
 </tr>
-<% } %>
-
+<% } -%>
 </table>
 </div>
 <div class = "column">
 <table>
     <tr>
-        <th style="background-color: #757fe4;">Player ID</th>
         <th style="background-color: #757fe4;">Player Name</th>
+        <th style="background-color: #757fe4;">Player Codename</th>
       </tr>
-<% for (let i = 15; i < 30; i++) { %>
-    <tr>
-    <% if (typeof players[i] === 'undefined') { %>
-        <td><input type="text" name="<%= i %>[playerID]"/></td>
-        <td><input type="text" name="<%= i %>[playerName]"/></td>
-    <% }  else { %>
-    <td><input type="text" name="<%= i %>[playerID]" value="<%= players[i].id %>"/></td>
-    <td><input type="text" name="<%= i %>[playerName]" value="<%= players[i].first_name + ' ' + players[i].last_name %>"/></td>
-    <% } %>
-    </tr>
-<% } %>
+      <% for (let i = 16; i < 31; i++) { -%>
+        <tr>
+            <% let found = false; -%>
+            <% for (var l = players.length, k = 0; k < l; k++) { -%>
+                    <% if (players[k].id == i) { -%>
+                        <td><input type="text" name="<%= i %>[playerName]" value="<%= players[k].first_name + ' ' + players[k].last_name %>"/></td>
+                        <td><input type="text" name="<%= i %>[playerCodename]" value="<%= players[k].codename %>"/></td>
+                        <% found = true; -%>
+                        <% break; -%>
+                    <% } -%>
+            <% } -%>
+            <% if (!found) { -%>
+                <td><input type="text" name="<%= i %>[playerName]"/></td>
+                <td><input type="text" name="<%= i %>[playerCodename]"/></td>
+            <% } -%>
+        </tr>
+        <% } -%>
 </table>
 </div>
+
+
+
+

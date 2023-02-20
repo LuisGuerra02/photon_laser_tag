@@ -17,22 +17,24 @@ const getPlayers = (request, response) => {
       throw error
     }
     
+    console.log(results.rows);
     response.render('player-screen/player-form', {players: results.rows});
   });
 }
 
-const setPlayers = async (request, response) => {
-  
-  const playerID = parseInt(request.playerID);
+const setPlayers = async (request, id) => {
+  const playerID = id;
+  const playerCodename = request.playerCodename;
   const playerName = request.playerName.split(" ", 2);
 
-  if (!(Number.isInteger(playerID) && playerName[0] && playerName[1])) {
+  if (!(playerID && playerCodename && playerName[0] && playerName[1])) {
+    console.log(`Invalid: ${playerID}, ${playerCodename}, ${playerName}`);
     return;
   }
 
   let queryString = 
   "INSERT INTO player (id, first_name, last_name, codename)" +
-  "VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', 'placeholder') " +
+  "VALUES (" + playerID + ", '" + playerName[0] + "', '" + playerName[1] + "', '" + playerCodename +"') " +
   "ON CONFLICT (id) DO UPDATE " +
     "SET first_name = EXCLUDED.first_name, " +
         "last_name = EXCLUDED.last_name, " +

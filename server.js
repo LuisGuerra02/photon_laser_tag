@@ -24,8 +24,9 @@ app.get("/entry", db.getPlayers);
 
 app.post("/entry", (req, res) => {
 
-	for (let i = 0; i < 29; i++) {
-		db.setPlayers(req.body[i]);
+	for (let i = 1; i < 31; i++) {
+		console.log(`${req.body[i].playerCodename}: ${i}`);
+		db.setPlayers(req.body[i], i);
 	}
 
 	res.render("splash-screen/splash");
