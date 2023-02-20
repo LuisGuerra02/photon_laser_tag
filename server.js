@@ -34,6 +34,6 @@ app.post("/entry", (req, res) => {
 	//res.render("player-screen/player-form");
 })
 
-app.listen(5432, () => {
+app.listen(3000, () => {
 	console.log("server started on port 3000");
 });
