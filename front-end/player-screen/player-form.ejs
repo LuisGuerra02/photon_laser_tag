@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Photon Laser Tag</title>
+    <link rel="stylesheet" href="player-screen/form.css">
+</head>
+
+<div class="fade-in">
+
+    <body style="background-color: #0a060a;" onload="clearForm()">
+        <div class="row">
+            <div class="column">
+                <table>
+                    <tr>
+                        <th style="background-color: #fa7055;">Player Name</th>
+                        <th style="background-color: #fa7055;">Player Codename</th>
+                    </tr>
+                    <form class="player-form" action="/entry" method="POST">
+                        <%- include('players.ejs') %>
+                            <div style="text-align: center;"><button type="submit" class="btn">Submit</button></div>
+                    </form>
+            </div>
+        </div>
+</div>
+</body>
+
+<script>
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        window.location = "/";
+    }
+
+    window.onload = function() {
+        getPlayersFromDB();
+    }
+
+    function clearForm() {
+
+        for (let i = 0; i < 30; i++) {
+            
+        }
+
+        document.getElementsByTagName("input").value = "";
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    }
+    
+</script>
+
+</html>
