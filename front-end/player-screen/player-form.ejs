@@ -7,7 +7,6 @@
 </head>
 
 <div class="fade-in">
-
     <body style="background-color: #0a060a;" onload="clearForm()">
         <div class="row">
             <div class="column">
@@ -28,10 +27,6 @@
 <script>
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
         window.location = "/";
-    }
-
-    window.onload = function() {
-        getPlayersFromDB();
     }
 
     function clearForm() {
