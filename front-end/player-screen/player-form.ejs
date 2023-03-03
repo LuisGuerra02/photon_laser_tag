@@ -7,12 +7,13 @@
 </head>
 
 <div class="fade-in">
-    <body style="background-color: #0a060a;" onload="clearForm()">
+
+    <body style="background-color: #0a060a;">
         <div class="row">
             <div class="column">
                 <table>
                     <tr>
-                        <th style="background-color: #fa7055;">Player Name</th>
+                        <th style="background-color: #fa7055;">Player ID</th>
                         <th style="background-color: #fa7055;">Player Codename</th>
                     </tr>
                     <form class="player-form" action="/entry" method="POST">
@@ -29,19 +30,58 @@
         window.location = "/";
     }
 
-    function clearForm() {
+    let timer;
+    const waitTime = 1000;
 
-        for (let i = 0; i < 30; i++) {
-            
+    function typeChecker(id, index) {
+
+
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            getCodename(id, index);
+        }, waitTime);
+    }
+
+    function getCodename(id, index) {
+
+        if (id.length == 0) {
+            return;
         }
+        else {
+            document.getElementsByName(`${index}[playerCodename]`)[0].value = "Querying...";
+            id = parseInt(id);
 
-        document.getElementsByTagName("input").value = "";
+            // Query DB for id
+            if (typeof id === 'number' && !isNaN(id)) {
 
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        if (this.responseText == "") {
+                            document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = false;
+                            document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
+                            return;
+                        }
+                        var playerCodename = JSON.parse(this.responseText);
+                        console.log(`playerCodename = ${playerCodename.codename}`);
+                        
+                        document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = true;
+                        document.getElementsByName(`${index}[playerCodename]`)[0].value = playerCodename.codename;
+                    }
+                }
+
+                xmlhttp.open("GET", `/entry?id=${id}`, true);
+                xmlhttp.send();
+            }
+            else {
+                document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = true;
+                document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
+            }
         }
     }
-    
 </script>
 
 </html>
