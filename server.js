@@ -7,7 +7,7 @@ const db = require("./back-end/DBConnection");
 app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Directing Resource Requests
 app.use(express.static(path.join(__dirname, "front-end")));
@@ -18,23 +18,30 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/players", db.getPlayers);
-
-app.get("/entry", db.getPlayers);
+app.get("/entry", async (req, res) => {
+	if (req.query.id == undefined) {
+		db.getPlayers(req, res);
+	}
+	else {
+		const result = await db.getCodenameByID(req.query.id);
+		res.json(result);
+	}
+});
 
 app.post("/entry", (req, res) => {
 
+
 	for (let i = 1; i < 31; i++) {
-		console.log(`${req.body[i].playerCodename}: ${i}`);
-		db.setPlayers(req.body[i], i);
+		db.setPlayers(req.body[i]);
 	}
 
 	res.render("splash-screen/splash");
 
+
 	// TODO: Render Player Game (For now just delivering existing form)
-	//res.render("player-screen/player-form");
-})
+	//res.render("player-screen/player-form", {players: TODO: Create JSON of participating players});
+});
 
 let listener = app.listen(process.env.PORT || 3000, () => {
-    console.log(`server started on port ${listener.address().port}`);
+	console.log(`server started on port ${listener.address().port}`);
 });
