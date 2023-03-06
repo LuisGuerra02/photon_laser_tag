@@ -30,8 +30,6 @@ app.get("/entry", async (req, res) => {
 
 app.post("/entry", (req, res) => {
 
-	console.log(req.body);
-
 	players = req.body;
 
 	for (let i = 1; i < 31; i++) {
@@ -44,9 +42,7 @@ app.post("/entry", (req, res) => {
 		}
 	}
 
-	console.log(players);
 	res.render("splash-screen/splash");
-
 
 	// TODO: Render Player Game (For now just delivering existing form)
 	//res.render("player-screen/player-form", players);
