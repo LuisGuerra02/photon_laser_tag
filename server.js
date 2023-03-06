@@ -30,16 +30,26 @@ app.get("/entry", async (req, res) => {
 
 app.post("/entry", (req, res) => {
 
+	console.log(req.body);
+
+	players = req.body;
 
 	for (let i = 1; i < 31; i++) {
-		db.setPlayers(req.body[i]);
+		if (players[i].playerID != '' && players[i].playerCodename != '') {
+			db.setPlayers(players[i]);
+		}
+		else
+		{
+			delete players[i];
+		}
 	}
 
+	console.log(players);
 	res.render("splash-screen/splash");
 
 
 	// TODO: Render Player Game (For now just delivering existing form)
-	//res.render("player-screen/player-form", {players: TODO: Create JSON of participating players});
+	//res.render("player-screen/player-form", players);
 });
 
 let listener = app.listen(process.env.PORT || 3000, () => {
