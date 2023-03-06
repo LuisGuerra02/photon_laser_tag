@@ -16,7 +16,7 @@
                         <th style="background-color: #fa7055;">Player ID</th>
                         <th style="background-color: #fa7055;">Player Codename</th>
                     </tr>
-                    <form class="player-form" action="/entry" method="POST">
+                    <form class="player-form" action="/entry" method="POST" onsubmit="return validateForm();">
                         <%- include('players.ejs') %>
                             <div style="text-align: center;"><button type="submit" class="btn">Submit</button></div>
                     </form>
@@ -66,7 +66,6 @@
                             return;
                         }
                         var playerCodename = JSON.parse(this.responseText);
-                        console.log(`playerCodename = ${playerCodename.codename}`);
                         
                         document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = true;
                         document.getElementsByName(`${index}[playerCodename]`)[0].value = playerCodename.codename;
@@ -81,6 +80,17 @@
                 document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
             }
         }
+    }
+
+    function validateForm() {
+        for (let i = 0; i < 31; i++) {
+            if ((document.getElementsByName(`${i}[playerID]`)[0].value != "") && (document.getElementsByName(`${index}[playerCodename]`)[0].value == "")) {
+                alert(`Enter a Codename for ${document.getElementsByName(`${i}[playerID]`)[0].value}!`);
+                return false;
+            }
+        }
+
+        return true;
     }
 </script>
 
