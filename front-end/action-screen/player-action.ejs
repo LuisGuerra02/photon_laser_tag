@@ -23,7 +23,7 @@
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                             <tbody>
                                 <% for (let i = 1; i < 16; i++) { %>
-                                    <% if (players[i] != undefined) { %>
+                                    <% if (players[i] != undefined && players[i] != null) { %>
                                         <tr>
                                             <td><%= players[i].playerCodename %></td>
                                             <td>0</td>
@@ -83,7 +83,7 @@
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                             <tbody>
                                 <% for (let i = 16; i < 31; i++) { %>
-                                    <% if (players[i] != undefined) { %>
+                                    <% if (players[i] != undefined && players[i] != null) { %>
                                         <tr>
                                             <td><%= players[i].playerCodename %></td>
                                             <td>0</td>
