@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.get('/action', function(req, res) {
 	res.render('action-screen/player-action.ejs');
-  });
+});
 
 app.get("/entry", async (req, res) => {
 	if (req.query.id == undefined) {
