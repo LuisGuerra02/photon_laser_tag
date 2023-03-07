@@ -5,7 +5,7 @@
     <title>Testing</title>
     <link rel="stylesheet" href="action-screen/display.css">
 </head>
-    <body style="background-color: #000000;"></body>
+    <body style="background-color: #ffff;">
         <div class = "container">
             <div class="box"><b>RED TEAM</b>
                 <div class="line">
@@ -22,17 +22,19 @@
                             </thead>
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                             <tbody>
-                                <% for (let i = 1; i < Object.keys(players).length+1; i++) { %>
-                                    <tr>
-                                        <td><p><%= players[i].playerCodename %></p></td>
-                                        <td>0</td>
-                                    </tr>
+                                <% for (let i = 1; i < 31; i++) { %>
+                                    <% if (players[i] != undefined) { %>
+                                        <tr>
+                                            <td><%= players[i].playerCodename %></td>
+                                            <td>0</td>
+                                        </tr>
+                                    <% } %>
                                 <% } %>
                             </tbody>
                         </table>
                         </div>
                     </div>
-                <div style = "position:relative; left:center; top:0px;">
+                <div class = "action-table">
                     <div class="line">
                         <h3>Current Game Action</h3>
                     </div>

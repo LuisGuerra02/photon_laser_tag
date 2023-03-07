@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 app.get("/action", (req, res) => {
 	console.log("Sent the following players to the action screen:");
 	console.log(players);
+	console.log(`PlayerCodename = ${players[16].playerCodename}`);
 
 	res.render("action-screen/player-action", { players: players });
 
