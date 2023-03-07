@@ -5,38 +5,36 @@
     <title>Testing</title>
     <link rel="stylesheet" href="action-screen/display.css">
 </head>
-
-    <body style="background-color: black;"></body>
+    <body style="background-color: #000000;"></body>
         <div class = "container">
             <div class="box"><b>RED TEAM</b>
                 <div class="line">
                     <h3>Current Scores</h3>
-                    <p>hi: <%= players[2].playerCodename %></p>
                 </div>
-                <body>
-                    <div class="row">
-                        <div class="column">
-                            <table>
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center">
+                            <thead>
                                 <tr>
-                                    <th style="background-color: #fa7055;">Player Code Name</th>
-                                    <th style="background-color: #fa7055;">Score</th>
-                                    <% for (let i = 1; i < 3; i++) { %>
-                                        <tr>
-                                            <td><p><%= players[i].playerCodename %></p></td>
-                                            <td>hi</td>
-                                        </tr>
-                                    <% } %>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
                                 </tr>
-                            </table>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                            <tbody>
+                                <tr> <td>Player1</td> <td>0</td> </tr>
+                                <tr> <td>Player2</td> <td>4</td> </tr>
+                                <tr> <td>Player3</td> <td>2</td> </tr>
+                            </tbody>
+                        </table>
                         </div>
                     </div>
-                </body>
                 <div style = "position:relative; left:center; top:0px;">
                     <div class="line">
                         <h3>Current Game Action</h3>
                     </div>
-                    <div id="table-action">
-                        <div id="table-scroll">
+                    <div id="red-action">
+                        <div id="color-scroll">
                           <table>
                             <thead>
                                 <tr>
@@ -63,7 +61,7 @@
                         </div>
                       </div>
                  </div>
-                 <div style = "position:relative; left:center; top:225px;">
+                 <div style = "position:relative; left:center; top:50px;">
                     <div class="line"></div>
                     <h3>Remaining Time:</h3>
                  </div>
@@ -72,12 +70,30 @@
                 <div class="line">
                     <h3>Current Scores</h3>
                 </div>
-                <div style = "position:relative; left:center; top:150px;">
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
+                                </tr>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                            <tbody>
+                                <tr> <td>Player1</td> <td>0</td> </tr>
+                                <tr> <td>Player2</td> <td>4</td> </tr>
+                                <tr> <td>Player3</td> <td>2</td> </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div style = "position:relative; left:center; top:0px;">
                     <div class="line">
                         <h3>Current Game Action</h3>
                     </div>
-                    <div id="table-action">
-                        <div id="table-scroll">
+                    <div id="blue-action">
+                        <div id="color-scroll">
                           <table>
                             <thead>
                                 <tr>
@@ -104,7 +120,7 @@
                         </div>
                       </div>
                  </div>
-                 <div style = "position:relative; left:center; top:225px;">
+                 <div style = "position:relative; left:center; top:50px;">
                     <div class="line"></div>
                     <h3>Remaining Time:</h3>
                  </div>
