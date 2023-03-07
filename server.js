@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
 });
 
+app.get('/action', function(req, res) {
+	res.render('action-screen/player-action.ejs');
+  });
 
 app.get("/players", db.getPlayers);
 
