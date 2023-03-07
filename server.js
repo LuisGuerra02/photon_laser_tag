@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/action', function(req, res) {
-	res.render('action-screen/player-action.ejs');
+	res.render('action-screen/player-action');
 });
 
 app.get("/entry", async (req, res) => {
@@ -45,7 +45,7 @@ app.post("/entry", (req, res) => {
 		}
 	}
 
-	res.render("splash-screen/splash");
+	res.render('action-screen/player-action');
 
 	// TODO: Render Player Game (For now just delivering existing form)
 	//res.render("player-screen/player-form", players);
