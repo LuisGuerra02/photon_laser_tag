@@ -5,27 +5,122 @@
     <title>Testing</title>
     <link rel="stylesheet" href="action-screen/display.css">
 </head>
-
-    <body></body>
+    <body style="background-color: #000000;"></body>
         <div class = "container">
-            <body style="background-color: white;">
-                <div class="row">
-                    <div class="column">
-                        <table>
-                            <tr>
-                                <th style="background-color: #fa7055;">Player Code Name</th>
-                                <th style="background-color: #fa7055;">Score</th>
-                                <% for (let i = 1; i < 16; i++) { %>
-                                    <tr>
-                                      <td>lol</td>
-                                      <td>hi</td>
-                                    </tr>
-                                  <% } %>
-                            </tr>
-                            </form>
-                    </div>
+            <div class="box"><b>RED TEAM</b>
+                <div class="line">
+                    <h3>Current Scores</h3>
                 </div>
-                 <div style = "position:center; left:center; top:225px;">
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
+                                </tr>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                            <tbody>
+                                <tr> <td>Player1</td> <td>0</td> </tr>
+                                <tr> <td>Player2</td> <td>4</td> </tr>
+                                <tr> <td>Player3</td> <td>2</td> </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div style = "position:relative; left:center; top:0px;">
+                    <div class="line">
+                        <h3>Current Game Action</h3>
+                    </div>
+                    <div id="red-action">
+                        <div id="color-scroll">
+                          <table>
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Red Player</span></th>
+                                    <th><span class="text">Action</span></th>
+                                    <th><span class="text">Blue Player</span></th>
+                                </tr>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                              <tbody>
+                                <tr> <td>R1</td> <td>hit</td> <td>B12</td> </tr>
+                                <tr> <td>R3</td> <td>hit</td> <td>B7</td> </tr>
+                                <tr> <td>R5</td> <td>hit</td> <td>B8</td> </tr>
+                                <tr> <td>R7</td> <td>hit</td> <td>B9</td> </tr>
+                                <tr> <td>R2</td> <td>hit</td> <td>B3</td> </tr>
+                                <tr> <td>R4</td> <td>hit</td> <td>B5</td> </tr>
+                                <tr> <td>R8</td> <td>hit</td> <td>B10</td> </tr>
+                                <tr> <td>R10</td> <td>hit</td> <td>B4</td> </tr>
+                                <tr> <td>R12</td> <td>hit</td> <td>B11</td> </tr>
+                                <tr> <td>R9</td> <td>hit</td> <td>B2</td> </tr>
+                                <tr> <td>R11</td> <td>hit</td> <td>B1</td> </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                 </div>
+                 <div style = "position:relative; left:center; top:50px;">
+                    <div class="line"></div>
+                    <h3>Remaining Time:</h3>
+                 </div>
+            </div>
+            <div class="box"><b>BLUE TEAM</b>
+                <div class="line">
+                    <h3>Current Scores</h3>
+                </div>
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
+                                </tr>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                            <tbody>
+                                <tr> <td>Player1</td> <td>0</td> </tr>
+                                <tr> <td>Player2</td> <td>4</td> </tr>
+                                <tr> <td>Player3</td> <td>2</td> </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div style = "position:relative; left:center; top:0px;">
+                    <div class="line">
+                        <h3>Current Game Action</h3>
+                    </div>
+                    <div id="blue-action">
+                        <div id="color-scroll">
+                          <table>
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Blue Player</span></th>
+                                    <th><span class="text">Action</span></th>
+                                    <th><span class="text">Red Player</span></th>
+                                </tr>
+                            </thead>
+                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                              <tbody>
+                                <tr> <td>B1</td> <td>hit</td> <td>R12</td> </tr>
+                                <tr> <td>B3</td> <td>hit</td> <td>R7</td> </tr>
+                                <tr> <td>B5</td> <td>hit</td> <td>R8</td> </tr>
+                                <tr> <td>B7</td> <td>hit</td> <td>R9</td> </tr>
+                                <tr> <td>B2</td> <td>hit</td> <td>R3</td> </tr>
+                                <tr> <td>B4</td> <td>hit</td> <td>R5</td> </tr>
+                                <tr> <td>B8</td> <td>hit</td> <td>R10</td> </tr>
+                                <tr> <td>B10</td> <td>hit</td> <td>R4</td> </tr>
+                                <tr> <td>B12</td> <td>hit</td> <td>R11</td> </tr>
+                                <tr> <td>B9</td> <td>hit</td> <td>R2</td> </tr>
+                                <tr> <td>B11</td> <td>hit</td> <td>R1</td> </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                 </div>
+                 <div style = "position:relative; left:center; top:50px;">
                     <div class="line"></div>
                     <h3>Remaining Time:</h3>
                  </div>
