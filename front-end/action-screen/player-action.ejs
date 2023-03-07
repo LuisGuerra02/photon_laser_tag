@@ -12,7 +12,7 @@
                     <h3>Current Scores</h3>
                 </div>
                     <div id="table-action">
-                        <div id="table-scroll">
+                        <div id="table">
                         <table class="center">
                             <thead>
                                 <tr>
@@ -24,7 +24,7 @@
                             <tbody>
                                 <% for (let i = 1; i < Object.keys(players).length+1; i++) { %>
                                     <tr>
-                                        <td><p><%= players[i].playerCodename %></p></td>
+                                        <td><p style="margin: 0px;"><%= players[i].playerCodename %></p></td>
                                         <td>0</td>
                                     </tr>
                                 <% } %>
@@ -63,10 +63,6 @@
                           </table>
                         </div>
                       </div>
-                 </div>
-                 <div style = "position:relative; left:center; top:50px;">
-                    <div class="line"></div>
-                    <h3>Remaining Time:</h3>
                  </div>
             </div>
             <div class="box"><b>BLUE TEAM</b>
@@ -122,10 +118,6 @@
                           </table>
                         </div>
                       </div>
-                 </div>
-                 <div style = "position:relative; left:center; top:50px;">
-                    <div class="line"></div>
-                    <h3>Remaining Time:</h3>
                  </div>
             </div>
         </div>

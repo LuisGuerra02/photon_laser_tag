@@ -48,11 +48,15 @@ body{
 	position:relative;
 }
 
+#table {
+	height: 250px;
+}
+
 #table-scroll {
 	height:150px;
 	Overflow-y:scroll;
 	margin-top:20px;
-	margin-left:100px;
+
 }
 
 #table-action table {
@@ -98,7 +102,7 @@ body{
 .container .box{
 	position: relative;
 	width: calc(600px);
-	height: calc(600px);
+	height: calc(700px);
 	background: rgb(255, 255, 255);
 	float: left;
 	margin: 50px;
@@ -143,7 +147,7 @@ body{
 }
 
 #color-scroll {
-	height:150px;
+	height:200px;
 	Overflow-y:scroll;
 	margin-top:20px;
 	margin-left:100px;
