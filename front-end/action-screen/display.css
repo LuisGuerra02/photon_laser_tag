@@ -115,3 +115,14 @@ input[readonly] {
 	background: #fa7055;
 	color: rgb(255, 255, 255);
 }
+
+.btn {
+    width: 20%;
+    padding: 1rem;
+    background-color: rgb(203, 169, 245);
+    border-radius: 0.5rem;
+    font-size: large;
+    border: 1px solid black;
+	text-align: center;
+	margin: 0 auto;
+}
