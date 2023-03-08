@@ -23,8 +23,19 @@ app.get("/", (req, res) => {
 
 app.get("/action", (req, res) => {
 	console.log("Sent the following players to the action screen:");
+	for(var i = 1; i < 16 ; i++){
+		if(players[i]!= null) {
+			players[i].score = 0;
+			players[i].team = "Red";
+		}
+	}
+	for(var i = 16; i < 31 ; i++){
+		if(players[i]!= null) {
+			players[i].score = 0;
+			players[i].team = "Blue";
+		}
+	}
 	console.log(players);
-
 	res.render("action-screen/player-action", { players: players });
 
 	/* In-Game Player JSON file Format

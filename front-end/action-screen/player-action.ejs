@@ -12,7 +12,7 @@
                     <h3>Current Scores</h3>
                 </div>
                     <div id="table-action">
-                        <div id="table">
+                        <div id="table-scroll">
                         <table class="center">
                             <thead>
                                 <tr>
@@ -25,8 +25,8 @@
                                 <% for (let i = 1; i < 16; i++) { %>
                                     <% if (players[i] != undefined && players[i] != null) { %>
                                         <tr>
-                                            <td><%= players[i].playerCodename %></td>
-                                            <td>0</td>
+                                            <td><p style="margin: 0px;"><%= players[i].playerCodename %></p></td>
+                                            <td><%= players[i].score %></td>
                                         </tr>
                                     <% } %>
                                 <% } %>
@@ -81,16 +81,14 @@
                                 </tr>
                             </thead>
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
-                            <tbody>
-                                <% for (let i = 16; i < 31; i++) { %>
-                                    <% if (players[i] != undefined && players[i] != null) { %>
-                                        <tr>
-                                            <td><%= players[i].playerCodename %></td>
-                                            <td>0</td>
-                                        </tr>
-                                    <% } %>
+                            <% for (let i = 16; i < 31; i++) { %>
+                                <% if (players[i] != undefined && players[i] != null) { %>
+                                    <tr>
+                                        <td><%= players[i].playerCodename %></td>
+                                        <td><%= players[i].score %></td>
+                                    </tr>
                                 <% } %>
-                            </tbody>
+                            <% } %>
                         </table>
                         </div>
                     </div>
