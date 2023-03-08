@@ -25,8 +25,7 @@ app.get("/action", (req, res) => {
 	console.log("Sent the following players to the action screen:");
 	console.log(players);
 
-	// res.render("action-screen/player-action", { players: players });
-	res.render("action-screen/player-action", { 'players' : players });
+	res.render("action-screen/player-action", { players: players });
 
 	/* In-Game Player JSON file Format
 	 * {
@@ -59,8 +58,7 @@ app.post("/entry", (req, res) => {
 	for (let i = 1; i < 31; i++) {
 		if (players[i].playerID != "" && players[i].playerCodename != "") {
 			db.setPlayers(players[i]);
-		} 
-		else {
+		} else {
 			delete players[i];
 		}
 	}
