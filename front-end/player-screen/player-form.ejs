@@ -29,37 +29,26 @@
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
         window.location = "/";
     }
-
     let timer;
-    const waitTime = 1000;
-
+    const waitTime = 500;
     function typeChecker(id, index) {
-
-
         clearTimeout(timer);
-
         timer = setTimeout(() => {
             getCodename(id, index);
         }, waitTime);
     }
-
     function getCodename(id, index) {
-
         if (id.length == 0) {
             return;
         }
         else {
             document.getElementsByName(`${index}[playerCodename]`)[0].value = "Querying...";
             id = parseInt(id);
-
             // Query DB for id
             if (typeof id === 'number' && !isNaN(id)) {
-
                 var xmlhttp = new XMLHttpRequest();
-
                 xmlhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-
                         if (this.responseText == "") {
                             document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = false;
                             document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
@@ -71,7 +60,6 @@
                         document.getElementsByName(`${index}[playerCodename]`)[0].value = playerCodename.codename;
                     }
                 }
-
                 xmlhttp.open("GET", `/entry?id=${id}`, true);
                 xmlhttp.send();
             }
@@ -81,7 +69,6 @@
             }
         }
     }
-
     function validateForm() {
         for (let i = 0; i < 31; i++) {
             if ((document.getElementsByName(`${i}[playerID]`)[0].value != "") && (document.getElementsByName(`${index}[playerCodename]`)[0].value == "")) {
@@ -89,7 +76,6 @@
                 return false;
             }
         }
-
         return true;
     }
 </script>
