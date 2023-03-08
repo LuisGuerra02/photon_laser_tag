@@ -22,10 +22,12 @@
                             </thead>
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                             <tbody>
-                                <% for (let i = 1; i < Object.keys(players).length+1; i++) { %>
+                                <% for (let i = 1; i < 16; i++) { %>
                                     <tr>
-                                        <td><p style="margin: 0px;"><%= players[i].playerCodename %></p></td>
-                                        <td>0</td>
+                                        <% if (players[i]!=null) { %>
+                                            <td><p style="margin: 0px;"><%= players[i].playerCodename %></p></td>
+                                            <td>0</td>
+                                        <% } %>
                                     </tr>
                                 <% } %>
                             </tbody>

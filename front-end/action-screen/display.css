@@ -8,7 +8,7 @@ body{
 	position: relative;
 	width: 1500px;
 	height: 300px;
-	margin: 20px;
+
 }
 
 .container .box{
@@ -19,7 +19,6 @@ body{
 	float: left;
 	margin: 50px;
 	box-sizing: border-box;
-	border-radius: 10px;
 	text-align: center;
 }
 
@@ -42,10 +41,6 @@ body{
   
 .line:not(:empty)::after {
 	margin-left: .25em;
-}
-
-#table-action {
-	position:relative;
 }
 
 #table {
@@ -96,7 +91,6 @@ body{
 	position: relative;
 	width: 1500px;
 	height: 300px;
-	margin: 20px;
 }
 
 .container .box{
@@ -156,19 +150,16 @@ body{
 #table-action table {
 	width:50%;
 	border: 1px solid black;
-	border-radius: 10px;
 }
 
 #blue-action table {
 	width:80%;
 	border: 1px solid black;
-	border-radius: 10px;
 }
 
 #red-action table {
 	width:80%;
 	border: 1px solid black;
-	border-radius: 10px;
 }
 
 #blue-action table * {
