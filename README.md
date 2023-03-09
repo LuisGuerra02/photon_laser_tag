@@ -1,5 +1,15 @@
 # photon_laser_tag
-To start the server, run `npm start` in the root directory of this project.
+>Installation
+
+*Prerequisties:*
+
+* Node.js must be installed
+
+1. To install all dependencies run `npm i` in the terminal at the root directory of this project.
+2. Once all the dependencies have been installed, run `npm start` to start the server.
+
+Server default location is hosted at `localhost:3000`
+
 
 >Working Paths
 
