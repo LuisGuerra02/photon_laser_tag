@@ -115,7 +115,9 @@ table, th, td {
 	color: rgb(255, 255, 255);
 }
 
-.btn {
+#countdown {
+	display: flex;
+	justify-content: space-between;
     width: 20%;
     padding: 1rem;
     background-color: rgb(203, 169, 245);
