@@ -54,6 +54,10 @@ app.get("/action", (req, res) => {
 	*/
 });
 
+app.get("/timer", (req, res) => {
+	res.render("countdown-screen/timer", { players: players });
+});
+
 app.get("/entry", async (req, res) => {
 	if (req.query.id == undefined) {
 		db.getPlayers(req, res);
