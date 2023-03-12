@@ -13,39 +13,43 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "front-end")));
 app.set("views", path.join(__dirname, "front-end"));
 
+// Data Variables
+let players = {};
+
+// Website Paths
 app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
 });
 
+app.get("/timer", (req, res) => {
+	res.render("countdown-screen/timer", { players: players });
+});
 
 app.get("/entry", async (req, res) => {
 	if (req.query.id == undefined) {
 		db.getPlayers(req, res);
-	}
-	else {
+	} else {
 		const result = await db.getCodenameByID(req.query.id);
 		res.json(result);
 	}
 });
 
 app.post("/entry", (req, res) => {
-
 	players = req.body;
 
 	for (let i = 1; i < 31; i++) {
-		if (players[i].playerID != '' && players[i].playerCodename != '') {
+		if (players[i].playerID != "" && players[i].playerCodename != "") {
 			db.setPlayers(players[i]);
-		}
-		else
-		{
+		} else {
 			delete players[i];
 		}
 	}
 
-	res.render("splash-screen/splash");
+	res.redirect("/action");
+});
 
-	// TODO: Render Player Game (For now just delivering existing form)
-	//res.render("player-screen/player-form", players);
+app.get("/action", (req, res) => {
+	res.render("action-screen/player-action", { players: players });
 });
 
 let listener = app.listen(process.env.PORT || 3000, () => {

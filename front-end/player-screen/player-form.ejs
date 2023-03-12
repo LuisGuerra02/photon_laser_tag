@@ -8,7 +8,7 @@
 
 <div class="fade-in">
 
-    <body style="background-color: #0a060a;">
+    <body onload="startKey()" style="background-color: #0a060a;">
         <div class="row">
             <div class="column">
                 <table>
@@ -31,7 +31,26 @@
     }
 
     let timer;
-    const waitTime = 1000;
+    const waitTime = 500;
+
+    function startKey(){
+        window.addEventListener('keydown', function(event){
+            if(event.key == 'F5'){
+                event.preventDefault();
+
+                window.location = "timer";
+
+                //console.log("F5 Pressed")
+            }
+        });
+        
+        //Prevent F5 Shortcut from refreshing the page
+        window.addEventListener('keyup', function(event) {
+            if (event.key == 'F5') {
+              event.preventDefault();
+            }
+          });
+    }
 
     function typeChecker(id, index) {
 
