@@ -10,6 +10,7 @@
 
 Server default location is hosted at `localhost:3000`
 
+NOTE: App is also deployed to Heroku at 'https://lasertag-team10.herokuapp.com/'
 
 >Working Paths
 
