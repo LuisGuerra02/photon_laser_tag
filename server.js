@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/timer", (req, res) => {
-	res.render("countdown-screen/timer", { players: players });
+	res.render("countdown-screen/timer");
 });
 
 app.get("/entry", async (req, res) => {
@@ -45,7 +45,7 @@ app.post("/entry", (req, res) => {
 		}
 	}
 
-	res.redirect("/action");
+	res.redirect("/timer");
 });
 
 app.get("/action", (req, res) => {
