@@ -21,6 +21,43 @@ app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
 });
 
+app.get("/action", (req, res) => {
+	console.log("Sent the following players to the action screen:");
+	for(var i = 1; i < 16 ; i++){
+		if(players[i]!= null) {
+			players[i].score = 0;
+			players[i].team = "Red";
+		}
+	}
+	for(var i = 16; i < 31 ; i++){
+		if(players[i]!= null) {
+			players[i].score = 0;
+			players[i].team = "Blue";
+		}
+	}
+	console.log(players);
+	res.render("action-screen/player-action", { players: players });
+
+	/* In-Game Player JSON file Format
+	 * {
+	 * 		'index from entry table':
+	 * 		{
+	 * 			playerID: 'id',
+	 * 			playerCodename: 'codename'
+	 * 		},
+	 * 		'index from entry table':
+	 * 		{
+	 * 			playerID: 'id',
+	 * 			playerCodename: 'codename'
+	 * 		}
+	 * }
+	*/
+});
+
+app.get("/timer", (req, res) => {
+	res.render("countdown-screen/timer", { players: players });
+});
+
 app.get("/entry", async (req, res) => {
 	if (req.query.id == undefined) {
 		db.getPlayers(req, res);
