@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const db = require("./back-end/DBConnection");
+const ws = require("./back-end/webSocket");
 
 app.set("view engine", "ejs");
 
@@ -19,10 +20,6 @@ let players = {};
 // Website Paths
 app.get("/", (req, res) => {
 	res.render("splash-screen/splash");
-});
-
-app.get("/timer", (req, res) => {
-	res.render("countdown-screen/timer");
 });
 
 app.get("/entry", async (req, res) => {
@@ -48,7 +45,12 @@ app.post("/entry", (req, res) => {
 	res.redirect("/timer");
 });
 
+app.get("/timer", (req, res) => {
+	res.render("countdown-screen/timer");
+});
+
 app.get("/action", (req, res) => {
+	ws.startWebSocket(80);
 	res.render("action-screen/player-action", { players: players });
 });
 
