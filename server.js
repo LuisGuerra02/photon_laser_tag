@@ -4,6 +4,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const db = require("./back-end/DBConnection");
 const ws = require("./back-end/webSocket");
+const dgram = require('dgram');
+
+// Create a UDP socket
+const server = dgram.createSocket('udp4');
 
 app.set("view engine", "ejs");
 
@@ -56,4 +60,26 @@ app.get("/action", (req, res) => {
 
 let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
+});
+
+server.bind(5000, '0.0.0.0', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
+	console.log('UDP listening on 0.0.0.0:5000');
+});
+  
+  // Listen for incoming messages
+server.on('message', (msg, rinfo) => {
+console.log(`Received message: ${msg.toString()} from ${rinfo.address}:${rinfo.port}`);
+
+// Process the received data here
+
+});
+
+server.on('error', (err) => {
+console.error(`UDP server error:\n${err.stack}`);
+server.close();
+});
+
+// Close the socket when done
+server.on('close', () => {
+console.log('UDP server closed');
 });
