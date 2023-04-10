@@ -68,10 +68,15 @@ server.bind(5000, '0.0.0.0', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HE
   
   // Listen for incoming messages
 server.on('message', (msg, rinfo) => {
-console.log(`Received message: ${msg.toString()} from ${rinfo.address}:${rinfo.port}`);
+	if (ws.isGameRunning()) {
+		let message = msg.toString().split(":").map(Number);
 
-// Process the received data here
+		// Process the received data here
+		let playerFired = JSON.stringify(players[message[0]]);
+		let playerHit = JSON.stringify(players[message[1]]);
 
+		ws.updateGameAction(`{ "0": ${playerFired}, "1": ${playerHit} }`);
+	}
 });
 
 server.on('error', (err) => {

@@ -1,9 +1,12 @@
 window.onload =  () => {
+    const event = new CustomEvent("stop-game");
+
     let minute = 6;
     let second = 00;
     countdownTimer = setInterval(() => {
 
         if (minute == 0 && second == 0) {
+            document.dispatchEvent(event);
             clearInterval(countdownTimer);
         }
 
