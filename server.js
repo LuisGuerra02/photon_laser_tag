@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const db = require("./back-end/DBConnection");
 const ws = require("./back-end/webSocket");
+const tg = require("./back-end/trafficGenerator")
 const dgram = require('dgram');
 
 // Create a UDP socket
@@ -55,6 +56,8 @@ app.get("/timer", (req, res) => {
 
 app.get("/action", (req, res) => {
 	ws.startWebSocket(80);
+	console.log('');
+	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
 });
 
@@ -62,8 +65,8 @@ let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
 });
 
-server.bind(5000, '0.0.0.0', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
-	console.log('UDP listening on 0.0.0.0:5000');
+server.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
+	console.log('UDP listening on 127.0.0.1:7501');
 });
   
   // Listen for incoming messages
@@ -76,6 +79,7 @@ server.on('message', (msg, rinfo) => {
 		let playerHit = JSON.stringify(players[message[1]]);
 
 		ws.updateGameAction(`{ "0": ${playerFired}, "1": ${playerHit} }`);
+		tg.startTraffic(players);
 	}
 });
 
