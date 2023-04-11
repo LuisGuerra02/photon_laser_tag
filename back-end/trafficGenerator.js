@@ -15,7 +15,15 @@ async function startTraffic(listPlayers) {
     if(listPlayers[redID] != undefined && listPlayers[blueID] != undefined)
     {
       await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3) * 1000));
-      message = `${redID}:${blueID}`;
+
+      if(Math.floor(Math.random() * 2) == 0)
+      {
+        message = `${redID}:${blueID}`;
+      }
+      else
+      {
+        message = `${blueID}:${redID}`;
+      }
 
       UDPClientSocketTransmit.send(Buffer.from(message), serverAddressPort.port);
       break;
