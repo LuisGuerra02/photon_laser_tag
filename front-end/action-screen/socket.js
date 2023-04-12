@@ -8,7 +8,9 @@ socket.addEventListener("message", (event) => {
   playerFired = message[0].playerCodename;
   playerHit = message[1].playerCodename;
 
-  console.log(`${playerFired} hit ${playerHit}!`);
+  updateLog(playerFired, playerHit);
+  setScore(playerFired, 50);
+  setScore(playerHit, -25);
 });
 
 document.addEventListener("stop-game", () => {

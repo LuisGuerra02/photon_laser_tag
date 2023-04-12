@@ -8,7 +8,7 @@ body {
 .container {
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: center;
 }
 
 .box {
@@ -82,7 +82,7 @@ table, th, td {
 	margin-right: auto;
 }
 
-#color-scroll {
+.color-scroll {
 	display: flex;
 	height: 150px;
 	overflow-y: scroll;
@@ -126,4 +126,18 @@ table, th, td {
     border: 4px solid whitesmoke;
 	text-align: center;
 	margin: 0 auto;
+}
+
+.scoreboard {
+	height: 600px;
+	display: flex;
+	flex-flow: column nowrap;
+	flex-basis: 20%;
+	margin: 50px;
+	box-sizing: border-box;
+	color: whitesmoke;
+	font-size: xx-large;
+	border: solid whitesmoke;
+	border-radius: 10px;
+	text-align: center;
 }

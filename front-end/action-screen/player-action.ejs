@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="action-screen/display.css">
     <script src = "action-screen/countdown.js"></script>
     <script src = "action-screen/socket.js"></script>
+    <script src = "action-screen/scoreboard.js"></script>
 </head>
     <body>
         <div class = "container">
@@ -15,7 +16,7 @@
                 </div>
                     <div id="table-action">
                         <div id="table-scroll">
-                        <table class="center">
+                        <table class="center" id="red-scores">
                             <thead>
                                 <tr>
                                     <th><span class="text">Player</span></th>
@@ -27,8 +28,8 @@
                                 <% for (let i = 1; i < 16; i++) { %>
                                     <% if (players[i] != undefined && players[i] != null) { %>
                                         <tr>
-                                            <td><%= players[i].playerCodename %></td>
-                                            <td><%= players[i].score %></td>
+                                            <td class="red-team"><%= players[i].playerCodename %></td>
+                                            <td id="<%= players[i].playerCodename %>">0</td>
                                         </tr>
                                     <% } %>
                                 <% } %>
@@ -41,8 +42,8 @@
                         <h3>Current Game Action</h3>
                     </div>
                     <div id="red-action">
-                        <div id="color-scroll">
-                          <table>
+                        <div class="color-scroll">
+                          <table id="red-log">
                             <thead>
                                 <tr>
                                     <th><span class="text">Red Player</span></th>
@@ -52,22 +53,14 @@
                             </thead>
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                               <tbody>
-                                <tr> <td>R1</td> <td>hit</td> <td>B12</td> </tr>
-                                <tr> <td>R3</td> <td>hit</td> <td>B7</td> </tr>
-                                <tr> <td>R5</td> <td>hit</td> <td>B8</td> </tr>
-                                <tr> <td>R7</td> <td>hit</td> <td>B9</td> </tr>
-                                <tr> <td>R2</td> <td>hit</td> <td>B3</td> </tr>
-                                <tr> <td>R4</td> <td>hit</td> <td>B5</td> </tr>
-                                <tr> <td>R8</td> <td>hit</td> <td>B10</td> </tr>
-                                <tr> <td>R10</td> <td>hit</td> <td>B4</td> </tr>
-                                <tr> <td>R12</td> <td>hit</td> <td>B11</td> </tr>
-                                <tr> <td>R9</td> <td>hit</td> <td>B2</td> </tr>
-                                <tr> <td>R11</td> <td>hit</td> <td>B1</td> </tr>
                               </tbody>
                           </table>
                         </div>
                       </div>
                  </div>
+            </div>
+            <div class="scoreboard">
+                <p id="winning-team">Tie</p>
             </div>
             <div class="box"><b>BLUE TEAM</b>
                 <div class="line">
@@ -75,22 +68,24 @@
                 </div>
                     <div id="table-action">
                         <div id="table-scroll">
-                        <table class="center">
+                        <table class="center" id="blue-scores">
                             <thead>
                                 <tr>
                                     <th><span class="text">Player</span></th>
                                     <th><span class="text">Score</span></th>
                                 </tr>
                             </thead>
-                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
-                            <% for (let i = 16; i < 31; i++) { %>
-                                <% if (players[i] != undefined && players[i] != null) { %>
-                                    <tr>
-                                        <td><%= players[i].playerCodename %></td>
-                                        <td><%= players[i].score %></td>
-                                    </tr>
+                            <tbody>
+                                <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
+                                <% for (let i = 16; i < 31; i++) { %>
+                                    <% if (players[i] != undefined && players[i] != null) { %>
+                                        <tr>
+                                            <td class="blue-team"><%= players[i].playerCodename %></td>
+                                            <td id="<%= players[i].playerCodename %>">0</td>
+                                        </tr>
+                                    <% } %>
                                 <% } %>
-                            <% } %>
+                            </tbody>
                         </table>
                         </div>
                     </div>
@@ -99,8 +94,8 @@
                         <h3>Current Game Action</h3>
                     </div>
                     <div id="blue-action">
-                        <div id="color-scroll">
-                          <table>
+                        <div class="color-scroll">
+                          <table id="blue-log">
                             <thead>
                                 <tr>
                                     <th><span class="text">Blue Player</span></th>
@@ -110,17 +105,6 @@
                             </thead>
                             <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                               <tbody>
-                                <tr> <td>B1</td> <td>hit</td> <td>R12</td> </tr>
-                                <tr> <td>B3</td> <td>hit</td> <td>R7</td> </tr>
-                                <tr> <td>B5</td> <td>hit</td> <td>R8</td> </tr>
-                                <tr> <td>B7</td> <td>hit</td> <td>R9</td> </tr>
-                                <tr> <td>B2</td> <td>hit</td> <td>R3</td> </tr>
-                                <tr> <td>B4</td> <td>hit</td> <td>R5</td> </tr>
-                                <tr> <td>B8</td> <td>hit</td> <td>R10</td> </tr>
-                                <tr> <td>B10</td> <td>hit</td> <td>R4</td> </tr>
-                                <tr> <td>B12</td> <td>hit</td> <td>R11</td> </tr>
-                                <tr> <td>B9</td> <td>hit</td> <td>R2</td> </tr>
-                                <tr> <td>B11</td> <td>hit</td> <td>R1</td> </tr>
                               </tbody>
                           </table>
                         </div>
