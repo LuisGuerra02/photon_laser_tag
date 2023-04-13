@@ -136,8 +136,32 @@ table, th, td {
 	margin: 50px;
 	box-sizing: border-box;
 	color: whitesmoke;
-	font-size: xx-large;
 	border: solid whitesmoke;
 	border-radius: 10px;
 	text-align: center;
+}
+
+p {
+	font-size: xx-large;
+}
+
+#top-table {
+	width: 80%;
+	border: 1px solid whitesmoke;
+	background: rgb(54, 54, 54);
+}
+
+#top-players {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#top-red {
+	color: #fa7055;
+}
+
+#top-blue {
+	color: #758fe4;
 }

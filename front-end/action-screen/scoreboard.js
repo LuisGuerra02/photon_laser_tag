@@ -63,6 +63,11 @@ const updateScoreboard = () => {
 
 	sortScores(document.getElementById("red-scores"));
     sortScores(document.getElementById("blue-scores"));
+
+	setTopRedPlayer();
+	setTopBluePlayer();
+	
+	setTop5();
 }
 
 const updateRedLog = (redPlayer, bluePlayer, action) => {
@@ -139,3 +144,53 @@ const tieWinning = () => {
 	winningTeam.innerHTML = "Tie";
 	winningTeam.style.color = "silver";
 };
+
+const setTopRedPlayer = () => {
+	topPlayer = document.getElementById("top-red");
+	topPlayer.innerHTML = document.getElementsByClassName("red-team")[0].innerHTML;
+
+}
+
+const setTopBluePlayer = () => {
+	topPlayer = document.getElementById("top-blue");
+	topPlayer.innerHTML = document.getElementsByClassName("blue-team")[0].innerHTML;
+}
+
+const setTop5 = () => {
+	redTable = document.getElementById("red-scores");
+	blueTable = document.getElementById("blue-scores");
+	top5Table = document.getElementById("top-table");
+
+	redScores = redTable.rows;
+	blueScores = blueTable.rows;
+	let scores = [];
+
+	for (let i = 1; (i < redScores.length) && (i < 6); i++) {
+		scores.push(redScores[i].cells);
+	}
+	
+	for (let i = 1; (i < blueScores.length) && (i < 6); i++) {
+		scores.push(blueScores[i].cells);
+	}
+
+	scores.sort((a, b) => a[1].innerHTML - b[1].innerHTML)
+
+	newBody = document.createElement("tbody");
+	newBody.setAttribute("id", "t-body");
+
+	// Populate Table
+	for (let i = scores.length - 1; (i > scores.length - 6) && (i >= 0); i--) {
+		newPlayerRow = newBody.insertRow(-1);
+
+		newNameCell = newPlayerRow.insertCell();
+		nameCellData = document.createTextNode(scores[i][0].innerHTML)
+
+		newNameCell.appendChild(nameCellData);
+
+		newScoreCell = newPlayerRow.insertCell();
+		newScoreCell.appendChild(document.createTextNode(scores[i][1].innerHTML));
+	}
+
+	oldBody = document.getElementById("t-body");
+	oldBody.parentNode.replaceChild(newBody, oldBody);
+}

@@ -14,7 +14,7 @@ async function startTraffic(listPlayers) {
 
     if(listPlayers[redID] != undefined && listPlayers[blueID] != undefined)
     {
-      await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3) * 1000));
+      await new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * 3 + 1) * 1000));
 
       if(Math.floor(Math.random() * 2) == 0)
       {
