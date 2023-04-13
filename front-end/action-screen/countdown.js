@@ -3,6 +3,13 @@ window.onload =  () => {
 
     let minute = 6;
     let second = 00;
+
+     //Resume Audio File
+     const inSong = localStorage.getItem('song');
+     const audio = new Audio('music/Track0'+inSong+'.mp3');
+     audio.currentTime = 17;
+     audio.play();
+    
     countdownTimer = setInterval(() => {
 
         if (minute == 0 && second == 0) {
