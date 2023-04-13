@@ -142,7 +142,7 @@ table, th, td {
 }
 
 p {
-	font-size: xx-large;
+	font-size: x-large;
 }
 
 #top-table {
@@ -163,5 +163,20 @@ p {
 }
 
 #top-blue {
+	color: #758fe4;
+}
+
+#team-scores {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#red-total {
+	color: #fa7055;
+}
+
+#blue-total {
 	color: #758fe4;
 }

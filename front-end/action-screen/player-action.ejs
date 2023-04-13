@@ -23,7 +23,6 @@
                                     <th><span class="text">Score</span></th>
                                 </tr>
                             </thead>
-                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                             <tbody>
                                 <% for (let i = 1; i < 16; i++) { %>
                                     <% if (players[i] != undefined && players[i] != null) { %>
@@ -36,7 +35,6 @@
                             </tbody>
                         </table>
                         </div>
-                        <div id = "red-total">TOTAL SCORE: </div>
                     </div>
                 <div class = "action-table">
                     <div class="line">
@@ -52,7 +50,6 @@
                                     <th><span class="text">Blue Player</span></th>
                                 </tr>
                             </thead>
-                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                               <tbody>
                               </tbody>
                           </table>
@@ -64,7 +61,11 @@
                 <div class="line">
                     <h3>Winning Team</h3>
                 </div>
-                <p id="winning-team">Tie</p>
+                <div id="team-scores">
+                    <p id="red-total">0</p>
+                    <p id="winning-team">Tie</p>
+                    <p id="blue-total">0</p>
+                </div>
                 <div class="line">
                     <h3>Top Players</h3>
                 </div>
@@ -102,7 +103,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                                 <% for (let i = 16; i < 31; i++) { %>
                                     <% if (players[i] != undefined && players[i] != null) { %>
                                         <tr>
@@ -114,7 +114,6 @@
                             </tbody>
                         </table>
                         </div>
-                        <div id = "blue-total">TOTAL SCORE: </div>
                     </div>
                 <div style = "position:relative; left:center; top:0px;">
                     <div class="line">
@@ -130,7 +129,6 @@
                                     <th><span class="text">Red Player</span></th>
                                 </tr>
                             </thead>
-                            <!--EXAMPLE OF HOW TABLE DATA WILL LOOK (DELETE AS NECESSARY)-->
                               <tbody>
                               </tbody>
                           </table>
