@@ -8,7 +8,7 @@ body {
 .container {
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: center;
 }
 
 .box {
@@ -82,7 +82,7 @@ table, th, td {
 	margin-right: auto;
 }
 
-#color-scroll {
+.color-scroll {
 	display: flex;
 	height: 150px;
 	overflow-y: scroll;
@@ -126,4 +126,57 @@ table, th, td {
     border: 4px solid whitesmoke;
 	text-align: center;
 	margin: 0 auto;
+}
+
+.scoreboard {
+	height: 600px;
+	display: flex;
+	flex-flow: column nowrap;
+	flex-basis: 20%;
+	margin: 50px;
+	box-sizing: border-box;
+	color: whitesmoke;
+	border: solid whitesmoke;
+	border-radius: 10px;
+	text-align: center;
+}
+
+p {
+	font-size: x-large;
+}
+
+#top-table {
+	width: 80%;
+	border: 1px solid whitesmoke;
+	background: rgb(54, 54, 54);
+}
+
+#top-players {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#top-red {
+	color: #fa7055;
+}
+
+#top-blue {
+	color: #758fe4;
+}
+
+#team-scores {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#red-total {
+	color: #fa7055;
+}
+
+#blue-total {
+	color: #758fe4;
 }
