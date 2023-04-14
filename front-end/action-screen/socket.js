@@ -7,7 +7,6 @@ if (portNumber == null) {
   var socket = new WebSocket("ws://" + location.hostname + ":" + portNumber);
 }
 
-
 // Listener
 socket.addEventListener("message", (event) => {
   message = JSON.parse(event.data);

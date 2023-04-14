@@ -5,7 +5,9 @@ async function startTraffic(listPlayers) {
   const dgram = require('dgram');
   const UDPClientSocketTransmit = dgram.createSocket('udp4');
 
-  while(true) 
+  var startTime = Date.now();
+
+  while(Date.now() - startTime < 10000) 
   {
     let message, redID, blueID;
 
