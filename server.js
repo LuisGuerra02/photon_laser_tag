@@ -3,9 +3,12 @@ const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const db = require("./back-end/DBConnection");
+const ws = require("./back-end/webSocket");
+const tg = require("./back-end/trafficGenerator")
 const dgram = require('dgram');
-const { startWebSocket, updateGameAction, isGameRunning } = require("./back-end/webSocket");
-const tg = require("./back-end/trafficGenerator");
+
+// Create a UDP socket
+const server = dgram.createSocket('udp4');
 
 app.set("view engine", "ejs");
 
@@ -52,7 +55,7 @@ app.get("/timer", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-	startWebSocket(process.env.PORT || 3000);
+	ws.startWebSocket(80);
 	console.log('');
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
@@ -62,31 +65,30 @@ let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
 });
 
-const server = dgram.createSocket('udp4');
-
 server.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
 	console.log('UDP listening on 127.0.0.1:7501');
 });
-
-// Listen for incoming messages
+  
+  // Listen for incoming messages
 server.on('message', (msg, rinfo) => {
-	if (isGameRunning()) {
-		message = JSON.parse(msg);
+	if (ws.isGameRunning()) {
+		let message = msg.toString().split(":").map(Number);
 
-		let playerFired = message[0].playerCodename;
-		let playerHit = message[1].playerCodename;
+		// Process the received data here
+		let playerFired = JSON.stringify(players[message[0]]);
+		let playerHit = JSON.stringify(players[message[1]]);
 
-		updateGameAction(`{ "0": "${playerFired}", "1": "${playerHit}" }`);
+		ws.updateGameAction(`{ "0": ${playerFired}, "1": ${playerHit} }`);
 		tg.startTraffic(players);
 	}
 });
 
 server.on('error', (err) => {
-	console.error(`UDP server error:\n${err.stack}`);
-	server.close();
+console.error(`UDP server error:\n${err.stack}`);
+server.close();
 });
 
 // Close the socket when done
 server.on('close', () => {
-	console.log('UDP server closed');
+console.log('UDP server closed');
 });

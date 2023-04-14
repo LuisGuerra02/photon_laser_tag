@@ -1,15 +1,12 @@
-let serverUrl = window.location.origin.replace(/^http/, 'ws');
-let socket = new WebSocket(serverUrl);
+// Create WebSocket connection.
+const socket = new WebSocket("ws://localhost:80");
 
-socket.addEventListener("open", (event) => {
-  console.log("Connected to WebSocket server");
-});
-
+// Listener
 socket.addEventListener("message", (event) => {
-  const message = JSON.parse(event.data);
+  message = JSON.parse(event.data);
 
-  const playerFired = message[0].playerCodename;
-  const playerHit = message[1].playerCodename;
+  playerFired = message[0].playerCodename;
+  playerHit = message[1].playerCodename;
 
   updateLog(playerFired, playerHit);
   setScore(playerFired, 50);
@@ -18,4 +15,4 @@ socket.addEventListener("message", (event) => {
 
 document.addEventListener("stop-game", () => {
   socket.send("STOP THE COUNT!");
-});
+})
