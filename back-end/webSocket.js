@@ -2,16 +2,17 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const WebSocket = require("ws");
-let wss = new WebSocket.Server({noServer: true});
+let wss = new WebSocket.Server({server: app, path: "/action"});
 let clients = [];
 let gameRunning = true;
 
-const startWebSocket = (port) => {
+const startWebSocket = () => {
 
     gameRunning = true;
 
     if (!server.listening) {
-        server.listen(port);
+        server.listen(process.env.PORT || 80);
+        console.log("Websocket listening on port " + server.address().port);
     }
 }
 

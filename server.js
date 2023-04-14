@@ -55,8 +55,7 @@ app.get("/timer", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-	ws.startWebSocket(80);
-	console.log('');
+	ws.startWebSocket();
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
 });
