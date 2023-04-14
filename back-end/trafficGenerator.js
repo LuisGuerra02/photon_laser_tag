@@ -1,4 +1,4 @@
-const serverAddressPort = {host: '54.243.129.215', port: 7501};
+const serverAddressPort = {host: '54.243.129.215', port: 7502};
 
 async function startTraffic(listPlayers) {
   

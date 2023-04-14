@@ -55,7 +55,7 @@ app.get("/timer", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-	ws.startWebSocket(7501);
+	ws.startWebSocket(7502);
 	console.log('');
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
@@ -65,8 +65,8 @@ let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
 });
 
-server.bind(7501, '54.243.129.215', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
-	console.log('UDP listening on 54.243.129.215:7501');
+server.bind(7502, '54.243.129.215', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
+	console.log('UDP listening on 54.243.129.215:7502');
 });
   
 // Listen for incoming messages
