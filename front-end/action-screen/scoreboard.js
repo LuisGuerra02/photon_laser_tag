@@ -68,6 +68,9 @@ const updateScoreboard = () => {
 	setTopBluePlayer();
 	
 	setTop5();
+	
+	document.getElementById("red-total").innerHTML = redPoints;
+	document.getElementById("blue-total").innerHTML = bluePoints;
 }
 
 const updateRedLog = (redPlayer, bluePlayer, action) => {
