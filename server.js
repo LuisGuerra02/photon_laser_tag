@@ -63,11 +63,11 @@ app.get("/action", (req, res) => {
 });
 
 let listener = app.listen(PORT, () => {
-	console.log(`server started on port ${PORT}`);
+	console.log(`server started on port ${listener.address().port}`);
 });
 
 server.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
-	console.log(`UDP listening on 127.0.0.1:${PORT}`);
+	console.log('UDP listening on 127.0.0.1:7501');
 });
   
   // Listen for incoming messages
