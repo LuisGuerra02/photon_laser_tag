@@ -53,7 +53,7 @@ app.get("/timer", (req, res) => {
 app.get("/action", (req, res) => {
 	game.startGame();
 	tg.startTraffic(players);
-	res.render("action-screen/player-action", { players: players, port: process.env.PORT });
+	res.render("action-screen/player-action", { players: players });
 });
 
 const getPlayers = () => {

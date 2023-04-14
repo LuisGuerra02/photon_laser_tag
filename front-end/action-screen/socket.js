@@ -1,11 +1,7 @@
 // Create WebSocket connection.
-let portNumber = document.getElementById("portNumber");
+var HOST = location.origin.replace(/^http/, 'ws');
+var socket = new WebSocket(HOST);  
 
-if (portNumber == null) {
-  var socket = new WebSocket("ws://" + location.hostname + ":3000");  
-} else {
-  var socket = new WebSocket("ws://" + location.hostname + ":" + portNumber);
-}
 
 // Listener
 socket.addEventListener("message", (event) => {
