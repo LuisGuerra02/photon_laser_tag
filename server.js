@@ -6,7 +6,6 @@ const db = require("./back-end/DBConnection");
 const ws = require("./back-end/webSocket");
 const tg = require("./back-end/trafficGenerator")
 const dgram = require('dgram');
-const PORT = process.env.PORT || 3000; // Use the process.env.PORT variable or port 3000 as a fallback
 
 // Create a UDP socket
 const server = dgram.createSocket('udp4');
@@ -56,13 +55,13 @@ app.get("/timer", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-	ws.startWebSocket(PORT);
+	ws.startWebSocket(80);
 	console.log('');
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
 });
 
-let listener = app.listen(PORT, () => {
+let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
 });
 
