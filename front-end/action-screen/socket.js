@@ -1,5 +1,12 @@
 // Create WebSocket connection.
-const socket = new WebSocket("ws://localhost/action");
+let portNumber = document.getElementById("portNumber");
+
+if (portNumber == null) {
+  var socket = new WebSocket("ws://" + location.hostname + ":3000");  
+} else {
+  var socket = new WebSocket("ws://" + location.hostname + ":" + portNumber);
+}
+
 
 // Listener
 socket.addEventListener("message", (event) => {

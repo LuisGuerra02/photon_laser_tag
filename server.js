@@ -1,93 +1,63 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-const bodyParser = require("body-parser");
-const db = require("./back-end/DBConnection");
-const ws = require("./back-end/webSocket");
-const tg = require("./back-end/trafficGenerator")
+let WebSocketServer = require("ws").Server;
+let app = require("./back-end/routes.js");
+let game = require("./back-end/game");
+const tg = require("./back-end/trafficGenerator");
+let server = require("http").createServer();
 const dgram = require('dgram');
+const trafficSocket = dgram.createSocket('udp4');
 
-// Create a UDP socket
-const server = dgram.createSocket('udp4');
+let wss = new WebSocketServer({
+    server: server,
+})
 
-app.set("view engine", "ejs");
+clients = [];
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+server.on("request", app.app);
 
-// Directing Resource Requests
-app.use(express.static(path.join(__dirname, "front-end")));
-app.set("views", path.join(__dirname, "front-end"));
+const updateGameAction = (data) => {
+    clients.forEach((client) => {
+        client.send(data);
+    })
+}
 
-// Data Variables
-let players = {};
+wss.on("connection", (ws) => {
+    clients.push(ws);
+    ws.on("message", (msg) => {
+        if (msg.toString() == "STOP THE COUNT!") {
+            game.setGameState(false);
+        }
+    })
+})
 
-// Website Paths
-app.get("/", (req, res) => {
-	res.render("splash-screen/splash");
-});
+const listener = server.listen(process.env.PORT || 3000, () => {
+    console.log(`Server is listening on port ${listener.address().port}`);
+})
 
-app.get("/entry", async (req, res) => {
-	if (req.query.id == undefined) {
-		db.getPlayers(req, res);
-	} else {
-		const result = await db.getCodenameByID(req.query.id);
-		res.json(result);
-	}
-});
-
-app.post("/entry", (req, res) => {
-	players = req.body;
-
-	for (let i = 1; i < 31; i++) {
-		if (players[i].playerID != "" && players[i].playerCodename != "") {
-			db.setPlayers(players[i]);
-		} else {
-			delete players[i];
-		}
-	}
-
-	res.redirect("/timer");
-});
-
-app.get("/timer", (req, res) => {
-	res.render("countdown-screen/timer");
-});
-
-app.get("/action", (req, res) => {
-	ws.startWebSocket();
-	tg.startTraffic(players);
-	res.render("action-screen/player-action", { players: players });
-});
-
-let listener = app.listen(process.env.PORT || 3000, () => {
-	console.log(`server started on port ${listener.address().port}`);
-});
-
-server.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
+// Traffic Socket
+trafficSocket.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
 	console.log('UDP listening on 127.0.0.1:7501');
 });
-  
-  // Listen for incoming messages
-server.on('message', (msg, rinfo) => {
-	if (ws.isGameRunning()) {
+
+trafficSocket.on('message', (msg, rinfo) => {
+	if (game.isRunning()) {
+
+        players = app.getPlayers();
 		let message = msg.toString().split(":").map(Number);
 
 		// Process the received data here
 		let playerFired = JSON.stringify(players[message[0]]);
 		let playerHit = JSON.stringify(players[message[1]]);
 
-		ws.updateGameAction(`{ "0": ${playerFired}, "1": ${playerHit} }`);
+		updateGameAction(`{ "0": ${playerFired}, "1": ${playerHit} }`);
 		tg.startTraffic(players);
 	}
 });
 
-server.on('error', (err) => {
-console.error(`UDP server error:\n${err.stack}`);
-server.close();
+trafficSocket.on('error', (err) => {
+    console.error(`UDP server error:\n${err.stack}`);
+    trafficSocket.close();
 });
 
-// Close the socket when done
-server.on('close', () => {
-console.log('UDP server closed');
+trafficSocket.on('close', () => {
+    console.log('UDP server closed');
 });
