@@ -54,9 +54,8 @@ app.get("/timer", (req, res) => {
 	res.render("countdown-screen/timer");
 });
 
-const port = process.env.PORT || 3000;
 app.get("/action", (req, res) => {
-	ws.startWebSocket(port);
+	ws.startWebSocket(80);
 	console.log('');
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
