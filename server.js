@@ -55,7 +55,7 @@ app.get("/timer", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-	ws.startWebSocket(7502);
+	ws.startWebSocket(3000);
 	console.log('');
 	tg.startTraffic(players);
 	res.render("action-screen/player-action", { players: players });
@@ -65,11 +65,11 @@ let listener = app.listen(process.env.PORT || 3000, () => {
 	console.log(`server started on port ${listener.address().port}`);
 });
 
-server.bind(7502, '54.243.129.215', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
-	console.log('UDP listening on 54.243.129.215:7502');
+server.bind(7501, '127.0.0.1', () => { // SET THE TRAFFIC GENERATOR PORT AND IP HERE
+	console.log('UDP listening on 127.0.0.1:3000');
 });
   
-// Listen for incoming messages
+  // Listen for incoming messages
 server.on('message', (msg, rinfo) => {
 	if (ws.isGameRunning()) {
 		let message = msg.toString().split(":").map(Number);
@@ -84,11 +84,11 @@ server.on('message', (msg, rinfo) => {
 });
 
 server.on('error', (err) => {
-	console.error(`UDP server error:\n${err.stack}`);
-	server.close();
+console.error(`UDP server error:\n${err.stack}`);
+server.close();
 });
 
 // Close the socket when done
 server.on('close', () => {
-	console.log('UDP server closed');
+console.log('UDP server closed');
 });
