@@ -19,7 +19,7 @@
 
         if(timeLeft == 17){
             //Play Announcer Introduction
-            const i = Math.floor(Math.random() * 7) + 1;
+            const i = Math.floor(Math.random() * 6) + 1;
             var audio = new Audio('music/Track0'+i+'.mp3');
             localStorage.setItem('song', i.toString());
             audio.play();
