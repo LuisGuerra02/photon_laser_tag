@@ -1,0 +1,43 @@
+.splash
+{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(10,6,10,255);
+    z-index:0;
+    color:rgb(255, 255, 255);
+    text-align:center;
+    line-height:90vh;
+}
+
+.splash.fade-out
+{
+    position:fixed;
+    opacity:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(10,6,10,255);
+    z-index:-10;
+    color:rgb(255, 255, 255);
+    text-align:center;
+    line-height:90vh;
+    transition:all 2.5s;
+}
+
+@keyframes fadeIn
+{
+    to
+    {
+        opacity:1;
+    }
+}
+
+.fade-in
+{
+    opacity:0;
+    animation:fadeIn 2s ease-in forwards;
+}

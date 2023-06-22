@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photon Laser Tag</title>
+        <link rel="stylesheet" href="player-screen/form.css">
+    </head>
+    <body style="background-color:#0a060a;">
+        <div id="clock">
+            <span id="seconds">30</span>
+        </div>
+    </body>
+</html>
+<script>
+    timeLeft = 30;
+
+    function countdown() {
+        timeLeft--;
+        document.getElementById("seconds").innerHTML = String( timeLeft );
+
+        if(timeLeft == 17){
+            //Play Announcer Introduction
+            const i = Math.floor(Math.random() * 6) + 1;
+            var audio = new Audio('music/Track0'+i+'.mp3');
+            localStorage.setItem('song', i.toString());
+            audio.play();
+        }
+
+        if (timeLeft > 0) {
+            setTimeout(countdown, 1000);
+        }
+        else
+            window.location = "action";
+    };
+
+setTimeout(countdown, 1000);
+
+</script>

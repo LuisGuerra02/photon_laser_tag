@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Photon Laser Tag</title>
+    <link rel="stylesheet" href="action-screen/display.css">
+    <script src = "action-screen/countdown.js"></script>
+    <script src = "action-screen/socket.js"></script>
+    <script src = "action-screen/scoreboard.js"></script>
+</head>
+    <body>
+        <div class = "container">
+            <div class="box"><b>RED TEAM</b>
+                <div class="line">
+                    <h3>Current Scores</h3>
+                </div>
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center" id="red-scores">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 1; i < 16; i++) { %>
+                                    <% if (players[i] != undefined && players[i] != null) { %>
+                                        <tr>
+                                            <td class="red-team"><%= players[i].playerCodename %></td>
+                                            <td id="<%= players[i].playerCodename %>">0</td>
+                                        </tr>
+                                    <% } %>
+                                <% } %>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div class = "action-table">
+                    <div class="line">
+                        <h3>Current Game Action</h3>
+                    </div>
+                    <div id="red-action">
+                        <div class="color-scroll">
+                          <table id="red-log">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Red Player</span></th>
+                                    <th><span class="text">Action</span></th>
+                                    <th><span class="text">Blue Player</span></th>
+                                </tr>
+                            </thead>
+                              <tbody>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                 </div>
+            </div>
+            <div class="box" class="scoreboard"><b>SCOREBOARD</b>
+                <div class="line">
+                    <h3>Winning Team</h3>
+                </div>
+                <div id="team-scores">
+                    <p id="red-total">0</p>
+                    <p id="winning-team">Tie</p>
+                    <p id="blue-total">0</p>
+                </div>
+                <div class="line">
+                    <h3>Top Players</h3>
+                </div>
+                <div id="top-players">
+                    <p id="top-red"></p>
+                    <p id="top-blue"></p>
+                </div>
+                <div class="line">
+                    <h3>Top 5</h3>
+                </div>
+                <div id="top-players">
+                    <table id="top-table">
+                        <thead>
+                            <tr>
+                                <th><span class="text">Player</span></th>
+                                <th><span class="text">Score</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="t-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box"><b>BLUE TEAM</b>
+                <div class="line">
+                    <h3>Current Scores</h3>
+                </div>
+                    <div id="table-action">
+                        <div id="table-scroll">
+                        <table class="center" id="blue-scores">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Player</span></th>
+                                    <th><span class="text">Score</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 16; i < 31; i++) { %>
+                                    <% if (players[i] != undefined && players[i] != null) { %>
+                                        <tr>
+                                            <td class="blue-team"><%= players[i].playerCodename %></td>
+                                            <td id="<%= players[i].playerCodename %>">0</td>
+                                        </tr>
+                                    <% } %>
+                                <% } %>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div style = "position:relative; left:center; top:0px;">
+                    <div class="line">
+                        <h3>Current Game Action</h3>
+                    </div>
+                    <div id="blue-action">
+                        <div class="color-scroll">
+                          <table id="blue-log">
+                            <thead>
+                                <tr>
+                                    <th><span class="text">Blue Player</span></th>
+                                    <th><span class="text">Action</span></th>
+                                    <th><span class="text">Red Player</span></th>
+                                </tr>
+                            </thead>
+                              <tbody>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                 </div>
+            </div>
+        </div>
+        <div id = "countdown">
+            <div id = "text">Time Remaining:</div>
+            <div id = "timer">6:00</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+	box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.row {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+.column {
+	float: left;
+	width: 50%;
+	padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+    border: 2px solid black;
+}
+
+th {
+	text-align: center;
+    color: white;
+	padding: 16px;
+    border: 2px solid black;
+}
+
+td {
+	text-align: center;
+	padding: 8px;
+    border: 2px solid black;
+}
+
+tr {
+	background-color: #f2f2f2;
+}
+
+form {
+	text-align: center;
+	height: 0px;
+}
+
+.btn {
+    width: 20%;
+    padding: 1rem;
+    background-color: lightcoral;
+    border-radius: 0.5rem;
+    font-size: large;
+    border: 1px solid black;
+}
+
+@keyframes fadeIn
+{
+    to
+    {
+        opacity:1;
+    }
+}
+
+.fade-in
+{
+    opacity:0;
+    animation:fadeIn 2s ease-in forwards;
+}
+
+input[readonly]
+{
+	border-color: darkgrey;
+	border-style: solid;
+	border-width: 1px;
+	background-color: rgb(235, 235, 228);
+	color: rgb(84, 84, 84);
+	padding: 2px 0px;
+}
+
+#clock {
+	width: 600px;
+	height: 600px;
+	border-radius: 50%;
+	background-color: rgb(196, 59, 59);
+	margin: auto;
+}
+
+span {
+	display: block;
+	width: 100%;
+	margin: auto;
+	padding-top: 60px;
+	text-align: center;
+	font-size: 300px;
+}
