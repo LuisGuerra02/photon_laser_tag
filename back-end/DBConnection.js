@@ -12,7 +12,7 @@ const pool = new Pool({
 })
 
 function getPlayers (request, response) {
-  pool.query('SELECT * FROM player ORDER BY playerid ASC;', (error, results) => {
+  pool.query('SELECT * FROM player ORDER BY id ASC;', (error, results) => {
     if (error) {
       throw error
     }
@@ -21,17 +21,17 @@ function getPlayers (request, response) {
 }
 
 const setPlayers = async (request) => {
-  const playerid = request.playerid;
-  const playercodename = request.playercodename;
+  const playerID = request.playerID;
+  const playerCodename = request.playerCodename;
 
-  if (!(playerid && playercodename)) {
-    console.log(`Invalid: ${playerid}, ${playercodename}`);
+  if (!(playerID && playerCodename)) {
+    console.log(`Invalid: ${playerID}, ${playerCodename}`);
     return;
   }
 
   let queryString = 
-  "INSERT INTO player (playerid, playercodename)" +
-  "VALUES (" + playerid + ", '" + playercodename +"') " +
+  "INSERT INTO player (id, codename)" +
+  "VALUES (" + playerID + ", '" + playerCodename +"') " +
   "ON CONFLICT (id) DO NOTHING ";
 
   pool.query(queryString, (error, results) => {
@@ -45,7 +45,7 @@ const setPlayers = async (request) => {
 async function getCodenameByID (id) {
   try {
     const result = await pool.query(
-      `SELECT codename FROM player WHERE playerid = ${id}`
+      `SELECT codename FROM player WHERE id = ${id}`
     );
 
     return result.rows[0];

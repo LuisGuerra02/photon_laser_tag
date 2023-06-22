@@ -36,7 +36,7 @@ app.post("/entry", (req, res) => {
 	players = req.body;
 
 	for (let i = 1; i < 31; i++) {
-		if (players[i].playerid != "" && players[i].playercodename != "") {
+		if (players[i].playerID != "" && players[i].playerCodename != "") {
 			db.setPlayers(players[i]);
 		} else {
 			delete players[i];
