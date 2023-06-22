@@ -65,7 +65,7 @@
             return;
         }
         else {
-            document.getElementsByName(`${index}[playerCodename]`)[0].value = "Querying...";
+            document.getElementsByName(`${index}[playercodename]`)[0].value = "Querying...";
             id = parseInt(id);
 
             // Query DB for id
@@ -77,14 +77,14 @@
                     if (this.readyState == 4 && this.status == 200) {
 
                         if (this.responseText == "") {
-                            document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = false;
-                            document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
+                            document.getElementsByName(`${index}[playercodename]`)[0].readOnly = false;
+                            document.getElementsByName(`${index}[playercodename]`)[0].value = "";
                             return;
                         }
-                        var playerCodename = JSON.parse(this.responseText);
+                        var playercodename = JSON.parse(this.responseText);
                         
-                        document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = true;
-                        document.getElementsByName(`${index}[playerCodename]`)[0].value = playerCodename.codename;
+                        document.getElementsByName(`${index}[playercodename]`)[0].readOnly = true;
+                        document.getElementsByName(`${index}[playercodename]`)[0].value = playercodename.codename;
                     }
                 }
 
@@ -92,16 +92,16 @@
                 xmlhttp.send();
             }
             else {
-                document.getElementsByName(`${index}[playerCodename]`)[0].readOnly = true;
-                document.getElementsByName(`${index}[playerCodename]`)[0].value = "";
+                document.getElementsByName(`${index}[playercodename]`)[0].readOnly = true;
+                document.getElementsByName(`${index}[playercodename]`)[0].value = "";
             }
         }
     }
 
     function validateForm() {
         for (let i = 0; i < 31; i++) {
-            if ((document.getElementsByName(`${i}[playerID]`)[0].value != "") && (document.getElementsByName(`${index}[playerCodename]`)[0].value == "")) {
-                alert(`Enter a Codename for ${document.getElementsByName(`${i}[playerID]`)[0].value}!`);
+            if ((document.getElementsByName(`${i}[playerid]`)[0].value != "") && (document.getElementsByName(`${index}[playercodename]`)[0].value == "")) {
+                alert(`Enter a Codename for ${document.getElementsByName(`${i}[playerid]`)[0].value}!`);
                 return false;
             }
         }

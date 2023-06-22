@@ -21,17 +21,17 @@ function getPlayers (request, response) {
 }
 
 const setPlayers = async (request) => {
-  const playerID = request.playerID;
-  const playerCodename = request.playerCodename;
+  const playerid = request.playerid;
+  const playercodename = request.playercodename;
 
-  if (!(playerID && playerCodename)) {
-    console.log(`Invalid: ${playerID}, ${playerCodename}`);
+  if (!(playerid && playercodename)) {
+    console.log(`Invalid: ${playerid}, ${playercodename}`);
     return;
   }
 
   let queryString = 
   "INSERT INTO player (id, codename)" +
-  "VALUES (" + playerID + ", '" + playerCodename +"') " +
+  "VALUES (" + playerid + ", '" + playercodename +"') " +
   "ON CONFLICT (id) DO NOTHING ";
 
   pool.query(queryString, (error, results) => {
